@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 const List<Color> gradientColors = [
-  const Color(0xff2CDBC5),
-  const Color(0xffadff9a)
+  const Color(0x8Ac4d0ff),
+  const Color(0x73908fe7),
+  const Color(0x617a6ddd),
 ];
 
 class InputPage extends StatefulWidget {
@@ -37,6 +38,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+          Container(
+            color: Color(0xFF7047c7),
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: 80.0,
+          ),
         ],
       ),
     );
@@ -55,8 +62,8 @@ class RoundedCard extends StatelessWidget {
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment(0.8, 0.0),
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
             colors: colors,
           ),
           borderRadius: BorderRadius.circular(20.0),
