@@ -4,11 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/CardContent.dart';
 import 'package:bmi_calculator/RoundedCard.dart';
 
-const List<Color> gradientColors = [
+const List<Color> gradientColorsActive = [
   const Color(0x8Ac4d0ff),
   const Color(0x73908fe7),
   const Color(0x617a6ddd),
 ];
+
+const List<Color> gradientColorsInactive = [
+  const Color(0x8Acfd9ff),
+  const Color(0x73a6a5eb),
+  const Color(0x61948ae3),
+];
+
+enum Gender { female, male }
 
 class InputPage extends StatefulWidget {
   @override
@@ -16,6 +24,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +37,56 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                RoundedCard(
-                  colors: gradientColors,
-                  cardContent: CardContent(
-                    icon: FontAwesomeIcons.venus,
-                    label: 'WOMAN',
+                Expanded(
+                  child: RoundedCard(
+                    colors: selectedGender == Gender.female
+                        ? gradientColorsActive
+                        : gradientColorsInactive,
+                    cardContent: CardContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'WOMAN',
+                    ),
+                    state: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
                   ),
                 ),
-                RoundedCard(
-                  colors: gradientColors,
-                  cardContent: CardContent(
-                    icon: FontAwesomeIcons.mars,
-                    label: 'MALE',
+                Expanded(
+                  child: RoundedCard(
+                    colors: selectedGender == Gender.male
+                        ? gradientColorsActive
+                        : gradientColorsInactive,
+                    cardContent: CardContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
+                    state: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
                   ),
                 ),
               ],
             ),
           ),
-          RoundedCard(colors: gradientColors),
+          Expanded(
+            child: RoundedCard(colors: gradientColorsInactive),
+          ),
           Expanded(
             child: Row(
               children: [
-                RoundedCard(colors: gradientColors),
-                RoundedCard(colors: gradientColors),
+                Expanded(
+                  child: RoundedCard(
+                    colors: gradientColorsInactive,
+                  ),
+                ),
+                Expanded(
+                    child: RoundedCard(
+                  colors: gradientColorsInactive,
+                )),
               ],
             ),
           ),

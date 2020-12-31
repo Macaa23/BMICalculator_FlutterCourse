@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class RoundedCard extends StatelessWidget {
-  RoundedCard({@required this.colors, this.cardContent});
+  RoundedCard({@required this.colors, this.cardContent, this.state});
 
   final List<Color> colors;
   final Widget cardContent;
+  final Function state;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return GestureDetector(
+      onTap: state,
       child: Container(
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
