@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/CardContent.dart';
+import 'package:bmi_calculator/RoundedCard.dart';
 
 const List<Color> gradientColors = [
   const Color(0x8Ac4d0ff),
@@ -24,8 +27,20 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                RoundedCard(colors: gradientColors),
-                RoundedCard(colors: gradientColors),
+                RoundedCard(
+                  colors: gradientColors,
+                  cardContent: CardContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'WOMAN',
+                  ),
+                ),
+                RoundedCard(
+                  colors: gradientColors,
+                  cardContent: CardContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
+                  ),
+                ),
               ],
             ),
           ),
@@ -45,29 +60,6 @@ class _InputPageState extends State<InputPage> {
             height: 80.0,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RoundedCard extends StatelessWidget {
-  RoundedCard({@required this.colors});
-
-  final List<Color> colors;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            colors: colors,
-          ),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
       ),
     );
   }
