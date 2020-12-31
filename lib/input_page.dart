@@ -3,18 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/CardContent.dart';
 import 'package:bmi_calculator/RoundedCard.dart';
-
-const List<Color> gradientColorsActive = [
-  const Color(0x8Ac4d0ff),
-  const Color(0x73908fe7),
-  const Color(0x617a6ddd),
-];
-
-const List<Color> gradientColorsInactive = [
-  const Color(0x8Acfd9ff),
-  const Color(0x73a6a5eb),
-  const Color(0x61948ae3),
-];
+import 'constants.dart';
 
 enum Gender { female, male }
 
@@ -25,6 +14,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int personHeight = 160;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +23,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -73,7 +64,45 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: RoundedCard(colors: gradientColorsInactive),
+            child: RoundedCard(
+              colors: gradientColorsInactive,
+              cardContent: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'HEIGHT',
+                    style: textStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        personHeight.toString(),
+                        style: numberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: textStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: personHeight.toDouble(),
+                    min: 100.0,
+                    max: 220.0,
+                    activeColor: Color(0xFF7047c7),
+                    inactiveColor: Color(0x617047c7),
+                    onChanged: (double newValue) {
+                      setState(() {
+                        personHeight = newValue.round();
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(

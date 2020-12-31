@@ -12,7 +12,7 @@ class RoundedCard extends StatelessWidget {
     return GestureDetector(
       onTap: state,
       child: Container(
-        margin: EdgeInsets.all(15.0),
+        margin: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
