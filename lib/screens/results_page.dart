@@ -1,7 +1,7 @@
-import 'package:bmi_calculator/RoundedCard.dart';
+import 'file:///S:/Code/Flutter%20course/bmi-calculator-flutter/lib/components/RoundedCard.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'bottom_button.dart';
+import '../constants.dart';
+import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
