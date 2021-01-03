@@ -42,18 +42,15 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Just Fine',
-                    //resultText.toUpperCase(),
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '17.0',
-                    //bmiResult,
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'You keep going girl!',
-                    //interpretation,
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
